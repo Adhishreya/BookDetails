@@ -1,0 +1,7 @@
+@charset "ISO-8859-1";
+
+ul {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+}
