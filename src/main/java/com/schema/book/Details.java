@@ -4,7 +4,7 @@ public class Details {
 	private String bookName;
 	private String isbn;
 	private String publisher;
-	private int edition;
+	private double edition;
 	private int id;
 
 	public int getId() {
@@ -39,11 +39,17 @@ public class Details {
 		this.publisher = publisher;
 	}
 
-	public int getEdition() {
+	public double getEdition() {
 		return edition;
 	}
 
-	public void setEdition(int edition) {
+	@Override
+	public String toString() {
+		return "Details [bookName=" + bookName + ", isbn=" + isbn + ", publisher=" + publisher + ", edition=" + edition
+				+ ", id=" + id + "]";
+	}
+
+	public void setEdition(double edition) {
 		this.edition = edition;
 	}
 }
