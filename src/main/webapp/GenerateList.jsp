@@ -22,56 +22,28 @@
 
 
 	<div class="container overflow-hidden">
-		<div class="row gy-5">
-			<div class="col-6">
-				<div class="p-3 border bg-light">Custom column padding</div>
+		<div class="card-group">
+			<%
+			for (Details det : details) {
+			%>
+			<div class="card" style="width: 18rem;">
+				<img style="width: 80%;height:50%" src="<%=det.getImage() %>" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title"><%=det.getBookName()%></h5>
+					<p class="card-text"><%=det.getPublisher()%></p>
+					<a href="#" class="btn btn-primary">Add to Reading List</a>
+				</div>
 			</div>
-			<div class="col-6">
-				<div class="p-3 border bg-light">Custom column padding</div>
-			</div>
-			<div class="col-6">
-				<div class="p-3 border bg-light">Custom column padding</div>
-			</div>
-			<div class="col-6">
-				<div class="p-3 border bg-light">Custom column padding</div>
-			</div>
+
+			<%
+			}
+			%>
 		</div>
+
 	</div>
 
 
 
-	<table>
-		<thead>
-			<th>Name</th>
-			<th>Publisher</th>
-			<th>Edition</th>
-		</thead>
-		<!-- 	<tr> -->
-		<%
-		for (Details det : details) {
-		%>
-
-		<div class="card" style="width: 18rem;">
-			<img src="..." class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
-
-		<tr>
-			<td><%=det.getBookName()%></td>
-			<td><%=det.getPublisher()%></td>
-			<td><%=det.getEdition()%></td>
-		</tr>
-		<%
-		}
-		%>
-
-		<!-- 	</tr> -->
-	</table>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

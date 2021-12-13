@@ -6,6 +6,15 @@ public class Details {
 	private String publisher;
 	private double edition;
 	private int id;
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public int getId() {
 		return id;

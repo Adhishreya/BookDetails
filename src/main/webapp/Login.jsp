@@ -9,11 +9,8 @@
 <body>
 	<jsp:include page="navigator.html"></jsp:include>
 	<%
-	String emailId = request.getParameter("emailId");
+	String emailId = request.getParameter("email");
 	String password = request.getParameter("password");
-	if (emailId == null || password == null) {
-
-	}
 	%>
 	<jsp:forward page=""></jsp:forward>
 
