@@ -32,7 +32,7 @@ public class Update {
 		EntityManagerFactory bookManagerFactory = Utility.createPersistenceInstance();
 		EntityManager bookManager = bookManagerFactory.createEntityManager();
 
-		String JPQLs = "Update BookEntity k set k.image ?1 where k.id =?2";
+//		String JPQLs = "Update BookEntity k set k.image ?1 where k.id =?2";
 
 		Query query = bookManager.createQuery(JPQLs);
 //		query.setParameter(1, e);
