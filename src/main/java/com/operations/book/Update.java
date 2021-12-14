@@ -40,36 +40,39 @@ public class Update {
 //		System.out.println("records updated = "+result);
 ////		Utility.disconnectManager();
 //	}
-//	public void updateBookAuthor(int id,String author) {
-//		BookEntity bookEntity = new BookEntity();
-//		EntityManagerFactory bookManagerFactory = Utility.createPersistenceInstance();
-//		EntityManager bookManager = bookManagerFactory.createEntityManager();
+	public void updateBookAuthor(int id,String author) {
+		BookEntity bookEntity = new BookEntity();
+		EntityManagerFactory bookManagerFactory = Utility.createPersistenceInstance();
+		EntityManager bookManager = bookManagerFactory.createEntityManager();
+		
+		Find find  = new Find();
+		AuthorEntity authorResult = find.findAuthor("%"+author+"%");
+		
+		bookManager.getTransaction().begin();
+		AuthorEntity res = bookManager.find(AuthorEntity.class,authorResult.getAuthorID());
+		
+		BookEntity booke = bookManager.find(BookEntity.class, id);
+
+		booke.setAuthor(res);
+//		String JPQL = "Update BookEntity k set k.author_id = ?2 where k.id = ?1";
 //		
-//		Find find  = new Find();
-//		AuthorEntity authorResult = find.findAuthor("%"+author+"%");
-//		
-////		String JPQL = "Update BookEntity k set k.author_id = ?2 where k.id = ?1";
-////		
-////		Query query = bookManager.createQuery(JPQL);
-////		query.setParameter(1, id);
-////		query.setParameter(2, authorResult.getAuthorID());
-//		
-////		String JPQLs = "Update BookEntity k set k.image ?1 where k.id =?2";
-//
-////		Query query = bookManager.createQuery(JPQLs);
-////		query.setParameter(1, e);
-//		
-////		Query query = bookManager.createQuery(JPQLs);
-//		System.out.println(authorResult.getAuthorID());
-//
+//		Query query = bookManager.createQuery(JPQL);
+//		query.setParameter(1, id);
+//		query.setParameter(2, authorResult.getAuthorID());
+//		Query query = bookManager.createQuery(JPQLs);
+//		query.setParameter(1, e);
+		
+//		Query query = bookManager.createQuery(JPQLs);
+		System.out.println(authorResult.getAuthorID());
+
 //		bookManager.getTransaction().begin();
 //		BookEntity detail = bookManager.find(BookEntity.class, id);
 ////		bookManager.getTransaction().begin();
 //		AuthorEntity ae = bookManager.find(AuthorEntity.class, authorResult.getAuthorID());
 //		detail.setAuthor(ae);
 //				
-//		bookManager.getTransaction().commit();
-//	}
+		bookManager.getTransaction().commit();
+	}
 	
 	public void updateCategory(String category) {
 		EntityManagerFactory categoryFactory = Utility.createPersistenceInstance();

@@ -34,8 +34,8 @@ public static void main(String[] args) {
 //	}
 	
 	Update update = new Update();
-	update.updateCategory("Crime");
-//	update.updateBookAuthor(1, "Rowling");
+//	update.updateCategory("Crime");
+	update.updateBookAuthor(6, "Charles");
 //	System.out.println(find.updateCategory("Crime"));
 }
 }
