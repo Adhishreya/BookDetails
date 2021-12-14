@@ -61,12 +61,8 @@ public class Insert {
 		
 		entity.setAuthor(aEntity);
 		categoryList.add(entity);
-		
-//		bookManager.getTransaction().begin();
-//		bookManager.persist(entity);
-//
+
 		bookManager.getTransaction().commit();
-//		Utility.disconnectManager();
 	}
 
 	public void addUsers(Users user) {
