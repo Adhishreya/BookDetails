@@ -16,14 +16,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "category")
-@NamedQueries({ @NamedQuery(name = "findById", query = "Select K from CategoryEntity K where K.categoryID =?1") })
+@NamedQueries({ @NamedQuery(name = "findById", query = "Select K from CategoryEntity K where K.categoryID =?1"),
+		@NamedQuery(name = "findByName", query = "select k from CategoryEntity k where k.category like ?1") })
 public class CategoryEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int categoryID;
 	private String category;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "genres", joinColumns = { @JoinColumn(name = "genre_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "book_id", unique = true) })
 	private List<BookEntity> books;

@@ -92,7 +92,7 @@ public class Find {
 //		System.out.println(det);
 //		return det;
 //	}
-	public Author findAuthor(String author) {
+	public AuthorEntity findAuthor(String author) {
 		EntityManagerFactory authorManagerFactory = Utility.createPersistenceInstance();
 		EntityManager authorManager = authorManagerFactory.createEntityManager();
 		String query1 = " SELECT k from AuthorEntity k where k.name like ?1 ";
@@ -104,7 +104,8 @@ public class Find {
 		Author authorResult = new Author();
 		authorResult.setName(authors.get(0).getName());
 		
-		return authorResult;
+//		return authorResult;
+		return authors.get(0);
 		
 	}
 	public List findCategory(int id) {
@@ -139,5 +140,26 @@ public class Find {
 			det.add(detail);
 		}
 		return det;
+	}
+	
+	public Category findCategory(String category) {
+		EntityManagerFactory categoryFactory = Utility.createPersistenceInstance();
+		EntityManager categoryManager = categoryFactory.createEntityManager();
+		
+		Query query = categoryManager.createNamedQuery("findByName");
+		query.setParameter(1, "%"+category+"%");
+		 List<CategoryEntity> catEntityList = query.getResultList();
+		 
+		 List<Category> catList = new ArrayList();
+		 for(CategoryEntity cat : catEntityList) {
+			 Category c = new Category();
+			 c.setCategory(cat.getCategory());
+			 c.setBooks(cat.getBooks());
+			 c.setCategoryID(cat.getCategoryID());
+			 catList.add(c);
+		 }
+		 
+		 return catList.get(0);
+
 	}
 }
