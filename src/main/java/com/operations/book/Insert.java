@@ -29,6 +29,7 @@ public class Insert {
 		entity.setIsbn(book.getIsbn());
 		entity.setPublisher(book.getPublisher());
 		entity.setImage(book.getImage());
+		entity.setPrice(book.getPrice());
 
 		Find find = new Find();
 		Category categoryResult = find.findCategory(category);
@@ -61,7 +62,7 @@ public class Insert {
 		
 		entity.setAuthor(aEntity);
 		categoryList.add(entity);
-
+		
 		bookManager.getTransaction().commit();
 	}
 

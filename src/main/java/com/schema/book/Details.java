@@ -7,6 +7,15 @@ public class Details {
 	private double edition;
 	private int id;
 	private String image;
+	private Double price;
+	
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 	public String getImage() {
 		return image;

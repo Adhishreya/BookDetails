@@ -30,7 +30,7 @@
 				<img style="width: 80%;height:50%" src="<%=det.getImage() %>" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title"><%=det.getBookName()%></h5>
-					<p class="card-text"><%=det.getPublisher()%></p>
+					<p class="card-text"><%=det.getPrice()%></p>
 					<a href="#" class="btn btn-primary">Add to Reading List</a>
 				</div>
 			</div>

@@ -23,11 +23,9 @@
 		!
 	</p>
 	<%
-// 	entity.addBook(book1);
 	String category = request.getParameter("category");
 	String author = request.getParameter("authors");
 	entity.addBook(book1, category,author);
-// 	System.out.println(category+" "+author);
 	%>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

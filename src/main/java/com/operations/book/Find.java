@@ -34,6 +34,7 @@ public class Find {
 			detail.setEdition(e.getEdition());
 			detail.setPublisher(e.getPublisher());
 			detail.setImage(e.getImage());
+			detail.setPrice(e.getPrice());
 			det.add(detail);
 		}
 

@@ -40,54 +40,53 @@ public class Update {
 //		System.out.println("records updated = "+result);
 ////		Utility.disconnectManager();
 //	}
-	public void updateBookAuthor(int id,String author) {
-		BookEntity bookEntity = new BookEntity();
+	public void updateBookAuthor(int id, String author) {
+//		BookEntity bookEntity = new BookEntity();
 		EntityManagerFactory bookManagerFactory = Utility.createPersistenceInstance();
 		EntityManager bookManager = bookManagerFactory.createEntityManager();
-		
-		Find find  = new Find();
-		AuthorEntity authorResult = find.findAuthor("%"+author+"%");
-		
+
+		Find find = new Find();
+		AuthorEntity authorResult = find.findAuthor("%" + author + "%");
+
 		bookManager.getTransaction().begin();
-		AuthorEntity res = bookManager.find(AuthorEntity.class,authorResult.getAuthorID());
-		
+		AuthorEntity res = bookManager.find(AuthorEntity.class, authorResult.getAuthorID());
+
 		BookEntity booke = bookManager.find(BookEntity.class, id);
 
 		booke.setAuthor(res);
-//		String JPQL = "Update BookEntity k set k.author_id = ?2 where k.id = ?1";
-//		
-//		Query query = bookManager.createQuery(JPQL);
-//		query.setParameter(1, id);
-//		query.setParameter(2, authorResult.getAuthorID());
-//		Query query = bookManager.createQuery(JPQLs);
-//		query.setParameter(1, e);
-		
-//		Query query = bookManager.createQuery(JPQLs);
-		System.out.println(authorResult.getAuthorID());
-
-//		bookManager.getTransaction().begin();
-//		BookEntity detail = bookManager.find(BookEntity.class, id);
-////		bookManager.getTransaction().begin();
-//		AuthorEntity ae = bookManager.find(AuthorEntity.class, authorResult.getAuthorID());
-//		detail.setAuthor(ae);
-//				
+//		System.out.println(authorResult.getAuthorID());
 		bookManager.getTransaction().commit();
 	}
-	
+
 	public void updateCategory(String category) {
 		EntityManagerFactory categoryFactory = Utility.createPersistenceInstance();
 		EntityManager categoryManager = categoryFactory.createEntityManager();
 		Find find = new Find();
 		categoryManager.getTransaction().begin();
-		Category cat =  find.findCategory(category);
-		
-		CategoryEntity ce = categoryManager.find(CategoryEntity.class,cat.getCategoryID());
+		Category cat = find.findCategory(category);
+
+		CategoryEntity ce = categoryManager.find(CategoryEntity.class, cat.getCategoryID());
 		System.out.println(ce.getCategoryID());
-		BookEntity be = categoryManager.find(BookEntity.class,6 );
-		List <BookEntity> bList = ce.getBooks();
-		
+		BookEntity be = categoryManager.find(BookEntity.class, 6);
+		List<BookEntity> bList = ce.getBooks();
+
 		bList.add(be);
 		categoryManager.getTransaction().commit();
 	}
-	
+
+	public void updateBookPrice(int id, double price) {
+		BookEntity bookEntity;
+		EntityManagerFactory bookManagerFactory = Utility.createPersistenceInstance();
+		EntityManager bookManager = bookManagerFactory.createEntityManager();
+
+		bookEntity = bookManager.find(BookEntity.class, id);
+
+		if (bookEntity != null) {
+			bookManager.getTransaction().begin();
+			bookEntity.setPrice(price);
+			bookManager.getTransaction().commit();
+		}
+
+	}
+
 }
