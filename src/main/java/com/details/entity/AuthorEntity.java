@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "authors")
-@NamedQueries({ @NamedQuery(name = "findAuthor", query = "from AuthorEntity e where e.name like :name") })
+@NamedQueries({ @NamedQuery(name = "findAuthor", query = "from AuthorEntity e where e.name like ?1") })
 public class AuthorEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

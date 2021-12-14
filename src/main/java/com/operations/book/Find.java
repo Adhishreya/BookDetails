@@ -95,14 +95,17 @@ public class Find {
 	public AuthorEntity findAuthor(String author) {
 		EntityManagerFactory authorManagerFactory = Utility.createPersistenceInstance();
 		EntityManager authorManager = authorManagerFactory.createEntityManager();
-		String query1 = " SELECT k from AuthorEntity k where k.name like ?1 ";
-		Query query = authorManager.createQuery(query1);
-		query.setParameter(1, author);
-		List<AuthorEntity> authors = query.getResultList();
-		authors.get(0);
 		
-		Author authorResult = new Author();
-		authorResult.setName(authors.get(0).getName());
+		Query query = authorManager.createNamedQuery("findAuthor");
+		query.setParameter(1, "%"+author+"%");
+		List<AuthorEntity> authors = query.getResultList();
+		if(authors.isEmpty()) {
+			return null;
+		}
+//		authors.get(0);
+//		
+//		Author authorResult = new Author();
+//		authorResult.setName(authors.get(0).getName());
 		
 //		return authorResult;
 		return authors.get(0);
@@ -158,7 +161,9 @@ public class Find {
 			 c.setCategoryID(cat.getCategoryID());
 			 catList.add(c);
 		 }
-		 
+		 if(catList.isEmpty()) {
+			 return null;
+		 }
 		 return catList.get(0);
 
 	}

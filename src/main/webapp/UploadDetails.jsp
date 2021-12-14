@@ -14,7 +14,6 @@
 <body>
 	<jsp:include page="navigator.html"></jsp:include>
 	<jsp:useBean id="book1" class="com.schema.book.Details" scope="session"></jsp:useBean>
-	<%-- 	<jsp:useBean id="insertBook" class="com.jdbc.data.Transactions"></jsp:useBean> --%>
 	<jsp:useBean id="entity" class="com.operations.book.Insert"
 		scope="session"></jsp:useBean>
 	<jsp:setProperty property="*" name="book1" />
@@ -24,9 +23,11 @@
 		!
 	</p>
 	<%
-	entity.addBook(book1);
-// 	entity.findAllBooks();
-	// 	insertBook.insertData(book1);
+// 	entity.addBook(book1);
+	String category = request.getParameter("category");
+	String author = request.getParameter("authors");
+	entity.addBook(book1, category,author);
+// 	System.out.println(category+" "+author);
 	%>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -12,8 +12,6 @@ import com.schema.book.Details;
 public class Ui {
 public static void main(String[] args) {
 	Insert insert = new Insert();
-//	Category category = new Category();
-//	category.setCategory("Crime and Thrillers");
 //	
 //	insert.addCategory(category);
 	
@@ -35,7 +33,7 @@ public static void main(String[] args) {
 	
 	Update update = new Update();
 //	update.updateCategory("Crime");
-	update.updateBookAuthor(6, "Charles");
+	update.updateBookAuthor(7, "Jerome");
 //	System.out.println(find.updateCategory("Crime"));
 }
 }
