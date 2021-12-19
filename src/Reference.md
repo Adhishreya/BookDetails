@@ -1,2 +1,5 @@
 - https://www.baeldung.com/java-password-hashing
 - https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/crypto/SecretKeyFactory.html
+- Orphan Removal in Relationships
+- https://docs.oracle.com/javaee/6/tutorial/doc/bnbqa.html
+- https://stackoverflow.com/questions/47438535/understanding-arrow-tips-in-mysql-workbench-eer-diagram

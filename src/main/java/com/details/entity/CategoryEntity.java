@@ -24,7 +24,7 @@ public class CategoryEntity {
 	private int categoryID;
 	private String category;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinTable(name = "genres", joinColumns = { @JoinColumn(name = "genre_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "book_id", unique = true) })
 	private List<BookEntity> books;

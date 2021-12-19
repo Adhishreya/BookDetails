@@ -16,9 +16,9 @@ public class BookEntity {
 	private double edition;
 	private String image;
 	
-	private Double price;
+	private double price;
 
-public Double getPrice() {
+public double getPrice() {
 		return price;
 	}
 
@@ -27,7 +27,7 @@ public Double getPrice() {
 	}
 
 	//	@OneToOne
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	//cascade all would result in an error
 	@JoinColumn(name="author_id",unique = false)
 	private AuthorEntity author;
