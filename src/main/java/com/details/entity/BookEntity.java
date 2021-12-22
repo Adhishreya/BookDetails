@@ -27,16 +27,32 @@ public double getPrice() {
 	}
 
 	//	@OneToOne
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	//cascade all would result in an error
 	@JoinColumn(name="author_id",unique = false)
 	private AuthorEntity author;
 	public AuthorEntity getAuthor() {
 		return author;
 	}
+	
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	private CategoryEntity category;
+//	
 
 	public void setAuthor(AuthorEntity author) {
 		this.author = author;
+	}
+
+//	public CategoryEntity getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(CategoryEntity category) {
+//		this.category = category;
+//	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getImage() {

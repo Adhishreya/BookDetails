@@ -117,13 +117,15 @@ public class Find {
 		EntityManager categoryManager = categoryManagerFactory.createEntityManager();
 		
 		Query query = categoryManager.createNamedQuery("findById");
-		query.setParameter(1, 5);
+		query.setParameter(1, id);
 		
 		List<CategoryEntity> categories = query.getResultList();
 		List<Category> caregoryList = new ArrayList();
 		for(CategoryEntity ent : categories) {
 			Category cat = new Category();
 			cat.setCategory(ent.getCategory());
+			cat.setBooks(ent.getBooks());
+			cat.setCategoryID(ent.getCategoryID());
 			caregoryList.add(cat);
 		}
 		return caregoryList;
@@ -167,5 +169,8 @@ public class Find {
 		 }
 		 return catList.get(0);
 
+	}
+	public void findCategoryAndBook(int id) {
+//		String query = "Select k.book"
 	}
 }
