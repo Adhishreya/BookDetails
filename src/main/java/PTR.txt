@@ -1,0 +1,17 @@
+if in to many relation, in the target part if a record is deleted then all the related entities in the source will also be deleted
+ 
+ 
+ In bookDetails database here, if a book is deleted, then all the categories associated with the book will also get deleted,
+  so even if any other bok is associated with the same category they will also be deleted;
+  
+  when used with cascade delete then, all the data will get deleted
+  
+  publisher must also be varied .. as a one to many relation with the books
+  
+  
+  preferable to use sets instead of list in relations
+  
+  https://stackoverflow.com/questions/28860888/delete-a-child-from-a-onetomany-relationship
+  
+  Enumerated type 
+  https://thorben-janssen.com/hibernate-enum-mappings/

@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import com.details.entity.BookEntity;
+import com.details.entity.CategoryEntity;
 import com.utility.managers.Utility;
 
 public class Delete {
@@ -19,10 +20,22 @@ public class Delete {
 //		System.out.println(obj);
 		entityManager.getTransaction().begin();
 		BookEntity etityResult = entityManager.find(BookEntity.class, id);
-		if(etityResult != null) {
+		if (etityResult != null) {
 			entityManager.remove(etityResult);
 			entityManager.getTransaction().commit();
 		}
+	}
+
+	public void deleteCategory(int id) {
+		EntityManagerFactory categoryManagerFactory = Utility.createPersistenceInstance();
+		EntityManager categoryManager = categoryManagerFactory.createEntityManager();
+
+		CategoryEntity categoryEntity = categoryManager.find(CategoryEntity.class, id);
+
+		categoryManager.getTransaction().begin();
+		categoryManager.remove(categoryEntity);
+		categoryManager.getTransaction().commit();
+
 	}
 
 }

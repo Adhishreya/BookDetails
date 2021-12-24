@@ -7,13 +7,13 @@ public class Details {
 	private double edition;
 	private int id;
 	private String image;
-	private Double price;
+	private double price;
 	
-	public Double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

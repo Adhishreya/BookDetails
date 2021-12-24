@@ -10,6 +10,8 @@ import javax.persistence.Query;
 import com.details.entity.AuthorEntity;
 import com.details.entity.BookEntity;
 import com.details.entity.CategoryEntity;
+import com.details.entity.Comments;
+import com.details.entity.PostEntity;
 import com.details.entity.UserEntity;
 import com.schema.book.Author;
 import com.schema.book.Category;
@@ -96,32 +98,33 @@ public class Find {
 	public AuthorEntity findAuthor(String author) {
 		EntityManagerFactory authorManagerFactory = Utility.createPersistenceInstance();
 		EntityManager authorManager = authorManagerFactory.createEntityManager();
-		
+
 		Query query = authorManager.createNamedQuery("findAuthor");
-		query.setParameter(1, "%"+author+"%");
+		query.setParameter(1, "%" + author + "%");
 		List<AuthorEntity> authors = query.getResultList();
-		if(authors.isEmpty()) {
+		if (authors.isEmpty()) {
 			return null;
 		}
 //		authors.get(0);
 //		
 //		Author authorResult = new Author();
 //		authorResult.setName(authors.get(0).getName());
-		
+
 //		return authorResult;
 		return authors.get(0);
-		
+
 	}
+
 	public List findCategory(int id) {
 		EntityManagerFactory categoryManagerFactory = Utility.createPersistenceInstance();
 		EntityManager categoryManager = categoryManagerFactory.createEntityManager();
-		
+
 		Query query = categoryManager.createNamedQuery("findById");
 		query.setParameter(1, id);
-		
+
 		List<CategoryEntity> categories = query.getResultList();
 		List<Category> caregoryList = new ArrayList();
-		for(CategoryEntity ent : categories) {
+		for (CategoryEntity ent : categories) {
 			Category cat = new Category();
 			cat.setCategory(ent.getCategory());
 			cat.setBooks(ent.getBooks());
@@ -130,47 +133,64 @@ public class Find {
 		}
 		return caregoryList;
 	}
+
 	public List findBookAndPublisher() {
 		EntityManagerFactory bookManagerFactory = Utility.createPersistenceInstance();
 		EntityManager bookManager = bookManagerFactory.createEntityManager();
 		Query query = bookManager.createNamedQuery("findNameAndPublisher");
 		List<AuthorEntity> authors = query.getResultList();
-		
+
 		List<BookEntity> books = query.getResultList();
 		List<Details> det = new ArrayList();
 		for (Object e : books) {
-			Object objs[] = (Object[])e;
+			Object objs[] = (Object[]) e;
 			Details detail = new Details();
-			detail.setBookName((String)objs[0]);
-			detail.setPublisher((String)objs[1]);
+			detail.setBookName((String) objs[0]);
+			detail.setPublisher((String) objs[1]);
 			det.add(detail);
 		}
 		return det;
 	}
-	
+
 	public Category findCategory(String category) {
 		EntityManagerFactory categoryFactory = Utility.createPersistenceInstance();
 		EntityManager categoryManager = categoryFactory.createEntityManager();
-		
+
 		Query query = categoryManager.createNamedQuery("findByName");
-		query.setParameter(1, "%"+category+"%");
-		 List<CategoryEntity> catEntityList = query.getResultList();
-		 
-		 List<Category> catList = new ArrayList();
-		 for(CategoryEntity cat : catEntityList) {
-			 Category c = new Category();
-			 c.setCategory(cat.getCategory());
-			 c.setBooks(cat.getBooks());
-			 c.setCategoryID(cat.getCategoryID());
-			 catList.add(c);
-		 }
-		 if(catList.isEmpty()) {
-			 return null;
-		 }
-		 return catList.get(0);
+		query.setParameter(1, "%" + category + "%");
+		List<CategoryEntity> catEntityList = query.getResultList();
+
+		List<Category> catList = new ArrayList();
+		for (CategoryEntity cat : catEntityList) {
+			Category c = new Category();
+			c.setCategory(cat.getCategory());
+			c.setBooks(cat.getBooks());
+			c.setCategoryID(cat.getCategoryID());
+			catList.add(c);
+		}
+		if (catList.isEmpty()) {
+			return null;
+		}
+		return catList.get(0);
 
 	}
+
 	public void findCategoryAndBook(int id) {
 //		String query = "Select k.book"
+	}
+
+	public void findPosts(int id) {
+		EntityManagerFactory postManagerFactory = Utility.createPersistenceInstance();
+		EntityManager postManager = postManagerFactory.createEntityManager();
+
+//		PostEntity postEntity = postManager.find(PostEntity.class,id);
+		String jpql = "Select post from Comments post where post.id = ?1";
+
+		Query query = postManager.createQuery(jpql);
+		query.setParameter(1, id);
+
+		List<Comments> postList = query.getResultList();
+
+		System.out.println(postList.get(0));
 	}
 }

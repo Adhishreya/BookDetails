@@ -1,17 +1,33 @@
 //package com.details.entity;
 //
-//import javax.persistence.Embeddable;
-//import javax.persistence.EnumType;
-//import javax.persistence.Enumerated;
+//import javax.persistence.Convert;
+//import javax.persistence.EmbeddedId;
+//import javax.persistence.Entity;
 //
-//@Embeddable
+//import com.utility.managers.StatusAttributeConverter;
+//
+//@Entity
 //public class PaymentDetails {
-//	
-//	private enum Status{
-//		COD,PAID,FAIL
-//	};
-//@Enumerated(EnumType.STRING)
-//private Status s;
-//private Double total;
+//	@EmbeddedId
+//	@Convert(converter = StatusAttributeConverter.class)
+//	private StatusEntity status;
+//
+//	private Double total;
+//
+//	public StatusEntity getStatus() {
+//		return status;
+//	}
+//
+//	public void setStatus(StatusEntity status) {
+//		this.status = status;
+//	}
+//
+//	public Double getTotal() {
+//		return total;
+//	}
+//
+//	public void setTotal(Double total) {
+//		this.total = total;
+//	}
 //
 //}

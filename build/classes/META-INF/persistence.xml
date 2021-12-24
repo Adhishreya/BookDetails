@@ -11,6 +11,8 @@
 		<class>com.details.entity.AuthorEntity</class>
 		<class>com.details.entity.CategoryEntity</class>
 		<class>com.details.entity.UserEntity</class>
+		<class>com.details.entity.PostEntity</class>
+		<class>com.details.entity.Comments</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />

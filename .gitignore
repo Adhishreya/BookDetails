@@ -2,3 +2,8 @@
 design.png
 
 src/main/java/TRial.java
+*.class
+*.class
+build/classes/com/details/entity/BookEntity.class
+build/classes/com/operations/book/Find.class
+build/classes/com/operations/book/Find.class

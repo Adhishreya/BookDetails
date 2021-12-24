@@ -4,37 +4,41 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "book_details")
-@NamedQueries({@NamedQuery(name="findNameAndPublisher",query="Select k.bookName,k.publisher from BookEntity k")})
+@NamedQueries({ @NamedQuery(name = "findNameAndPublisher", query = "Select k.bookName,k.publisher from BookEntity k") })
 public class BookEntity {
 	private String bookName;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id ;
+	private int id;
 	private String isbn;
 	@Column(name = "publisher")
 	private String publisher;
 	private double edition;
 	private String image;
-	
+
 	private double price;
 
-public double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	//	@OneToOne
+	// one author can write many books and one book can be co-authored by multiple
+	// authors
+//	@ManyToMany(cascade = CascadeType.ALL,mappedBy = "authors")
+	// cascade all would result in an error
+
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	//cascade all would result in an error
-	@JoinColumn(name="author_id",unique = false)
+	@JoinColumn(name = "author_id", unique = false)
 	private AuthorEntity author;
+
 	public AuthorEntity getAuthor() {
 		return author;
 	}
-	
+
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	private CategoryEntity category;
 //	
@@ -51,9 +55,6 @@ public double getPrice() {
 //		this.category = category;
 //	}
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
 
 	public String getImage() {
 		return image;
