@@ -8,11 +8,10 @@ import com.operations.book.Find;
 
 public class Ui7 {
 	public static void main(String[] args) {
-//		Find find = new Find();
-//		List<CategoryEntity> catList = find.findCategory(7);
-//		System.out.println(catList.get(0));
-
 		Delete delete = new Delete();
-		delete.deleteCategory(8);
+//		delete.deleteCategory(8);
+		
+		delete.deleteBookByCatgoryBookID(8, 5);
+		
 	}
 }

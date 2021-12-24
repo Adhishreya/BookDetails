@@ -52,5 +52,9 @@ public class CategoryEntity {
 	public void setBooks(List<BookEntity> books) {
 		this.books = books;
 	}
+	
+	public void removeFromCategoryList(BookEntity book) {
+		books.remove(book);
+	}
 
 }

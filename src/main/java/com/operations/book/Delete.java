@@ -37,5 +37,22 @@ public class Delete {
 		categoryManager.getTransaction().commit();
 
 	}
+	
+	public void deleteBookByCatgoryBookID(int bookId, int categoryID) {
+		EntityManagerFactory entityManagerFactory = Utility.createPersistenceInstance();
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+			
+		CategoryEntity category = entityManager.find(CategoryEntity.class, categoryID);
+		BookEntity bookEnt = entityManager.find(BookEntity.class, bookId);
+		
+		entityManager.getTransaction().begin();
+//		entityManager.remove(bookEnt);
+		category.removeFromCategoryList(bookEnt);
+		entityManager.merge(category);
+		entityManager.remove(bookEnt);
+		entityManager.getTransaction().commit();
+		
+		
+	}
 
 }
