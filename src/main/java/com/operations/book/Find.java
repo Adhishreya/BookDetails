@@ -193,4 +193,26 @@ public class Find {
 
 		System.out.println(postList.get(0));
 	}
+
+	public void findJoinCategoryAndBook(int bookId) {
+		EntityManagerFactory entityManagerFactory = Utility.createPersistenceInstance();
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+//		String jpql = "Select book.,category from BookEntity join CategoryEntity category";
+		String jpql = "Select category.books from CategoryEntity category where category.id = 5 ";
+		Query query = entityManager.createQuery(jpql);
+
+		List<Object> objRes = query.getResultList();
+
+		for (Object obj : objRes) {
+//			Object[] objArrays = (Object[]) obj;
+			BookEntity bookEntity = (BookEntity) obj;
+//			CategoryEntity catEntity = (CategoryEntity) objArrays[1];
+			Details detail = new Details();
+			detail.setBookName(bookEntity.getBookName());
+			System.out.println(detail);
+//			Category category = new Category();
+//			category.setCategory(catEntity.getCategory());
+		}
+	}
 }

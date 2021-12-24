@@ -5,6 +5,7 @@ import com.operations.book.Find;
 public interface Ui9 {
 public static void main(String[] args) {
 	Find find = new Find();
-	find.findPosts(1);
+//	find.findPosts(1);
+	find.findJoinCategoryAndBook(5);
 }
 }
