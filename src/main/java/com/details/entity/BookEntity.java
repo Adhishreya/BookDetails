@@ -13,16 +13,16 @@ public class BookEntity {
 	private String isbn;
 	@Column(name = "publisher")
 	private String publisher;
-	private double edition;
+	private Double edition;
 	private String image;
 
-	private double price;
+	private Double price;
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -96,11 +96,11 @@ public class BookEntity {
 		this.publisher = publisher;
 	}
 
-	public double getEdition() {
+	public Double getEdition() {
 		return edition;
 	}
 
-	public void setEdition(double edition) {
+	public void setEdition(Double edition) {
 		this.edition = edition;
 	}
 

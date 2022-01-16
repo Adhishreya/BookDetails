@@ -18,9 +18,9 @@ public class PostEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
 	private List<Comments> comments;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private UserEntity user;
 
 	public String getPost() {
@@ -67,5 +67,9 @@ public class PostEntity {
 	public String toString() {
 		return "PostEntity [post=" + post + ", datePosted=" + datePosted + ", id=" + id + ", comments=" + comments
 				+ ", user=" + user + "]";
+	}
+
+	public void deleteComment(Comments comment) {
+		comments.remove(comment);
 	}
 }

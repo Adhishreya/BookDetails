@@ -4,6 +4,7 @@
 <%@page import="java.security.SecureRandom"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page errorPage="errors.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,13 +23,11 @@
 
 	<%
 	String password = request.getParameter("password");
-	System.out.println("password = "+password);
-	
-	
-	
+	System.out.println("password = " + password);
+
 	//SecureRandom class is used to introduce salting
 	SecureRandom random = new SecureRandom();
-	byte[] salt = new byte[16]; 
+	byte[] salt = new byte[16];
 	random.nextBytes(salt);
 
 	//third parameter is the strength parameter - indicates number of times algorithm is run for
@@ -36,13 +35,13 @@
 	SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 
 	byte[] hash = factory.generateSecret(spec).getEncoded();
-	System.out.println("hash = "+hash);
-	System.out.println("salt = "+salt);
+	System.out.println("hash = " + hash);
+	System.out.println("salt = " + salt);
 	%>
-	<jsp:setProperty property="email" param ="email" name="user" />
-	<jsp:setProperty property="name" name="user" param ="name" />
-	<jsp:setProperty property="hash" name="user" value="<%=hash %>" />
-	<jsp:setProperty property="salt" name="user" value="<%=salt %>" />
+	<jsp:setProperty property="email" param="email" name="user" />
+	<jsp:setProperty property="name" name="user" param="name" />
+	<jsp:setProperty property="hash" name="user" value="<%=hash%>" />
+	<jsp:setProperty property="salt" name="user" value="<%=salt%>" />
 
 
 	<%

@@ -14,6 +14,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+	<jsp:include page="navigator.html"></jsp:include>
 	<jsp:useBean id="books" class="com.operations.book.Find"></jsp:useBean>
 	<%
 	List<Details> details = books.findAllBooks();
@@ -21,25 +22,31 @@
 
 
 
-	<div class="container overflow-hidden">
-		<div class="card-group">
+	<div class="container ">
+		<div class="row">
 			<%
 			for (Details det : details) {
 			%>
-			<div class="card" style="width: 18rem;">
-				<img style="width: 80%;height:50%" src="<%=det.getImage() %>" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title"><%=det.getBookName()%></h5>
-					<p class="card-text"><%=det.getPrice()%></p>
-					<a href="#" class="btn btn-primary">Add to Reading List</a>
+			<div class="col-md-4 mt-2">
+				<div class="card" style="width: 300px;">
+					<img style="width: 100%; height: 50%" src="<%=det.getImage()%>"
+						class="card-img-top mx-auto d-block img-fluid " alt="...">
+					<div class="card-body">
+						<h5 class="card-title"><%=det.getBookName()%></h5>
+						<div class="d-flex flex-inline">
+							<p class="card-text">
+								<b><fmt:formatNumber value="<%=det.getPrice()%>"
+										type="currency" currencySymbol="" /> </b><%=det.getPrice()%></p>
+							<a href="#" class="btn btn-primary mx-auto">Add to Reading
+								List</a>
+						</div>
+					</div>
 				</div>
 			</div>
-
 			<%
 			}
 			%>
 		</div>
-
 	</div>
 
 

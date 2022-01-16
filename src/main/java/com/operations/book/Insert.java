@@ -158,18 +158,26 @@ public class Insert {
 		commentEntity.setDate(date);
 		commentEntity.setComment(commentMessage);
 		List<Comments> commentList = new ArrayList();
+
 		if (postEntity != null && userEntity != null) {
 			commentEntity.setUser(userEntity);
-			commentEntity.setPost(postEntity);
-//			commentList = 
-			postEntity.getComments().add(commentEntity);
-//			commentList.add(commentEntity);
-			System.out.println(postEntity);
-			postEntity.setComments(commentList);
+			System.out.println(commentList);
+			
+			commentList = postEntity.getComments();
 
-			commentManager.getTransaction().commit();
+			postEntity.getComments().add(commentEntity);
+
+//			postEntity.setComments(commentList);
+			commentEntity.setPost(postEntity);
+//			System.out.println(commentEntity);
+//			commentList.add(commentEntity);
+//			postEntity.setComments(commentList);
+//			System.out.println(postEntity);
+//			commentManager.merge(postEntity);
+//			commentManager.getTransaction().commit();
 		}
 
-		return postEntity.getId();
+//		return commentEntity.getId();
+		return 1;
 	}
 }

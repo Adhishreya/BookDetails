@@ -215,4 +215,14 @@ public class Find {
 //			category.setCategory(catEntity.getCategory());
 		}
 	}
+	
+	public void findPostById(int postId) {
+		EntityManagerFactory entityManagerFactory = Utility.createPersistenceInstance();
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		PostEntity post = entityManager.find(PostEntity.class, postId);
+		List<Comments> comment = post.getComments();
+		
+		System.out.println(post);
+	}
 }

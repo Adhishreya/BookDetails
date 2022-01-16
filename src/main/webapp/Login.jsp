@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page errorPage="errors.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 	String emailId = request.getParameter("email");
 	String password = request.getParameter("password");
 	%>
-	<jsp:forward page=""></jsp:forward>
+<%-- 	<jsp:forward page=""></jsp:forward> --%>
 
 </body>
 </html>

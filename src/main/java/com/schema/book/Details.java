@@ -4,16 +4,16 @@ public class Details {
 	private String bookName;
 	private String isbn;
 	private String publisher;
-	private double edition;
+	private Double edition;
 	private int id;
 	private String image;
-	private double price;
+	private Double price;
 	
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -57,7 +57,7 @@ public class Details {
 		this.publisher = publisher;
 	}
 
-	public double getEdition() {
+	public Double getEdition() {
 		return edition;
 	}
 
@@ -67,7 +67,7 @@ public class Details {
 				+ ", id=" + id + "]";
 	}
 
-	public void setEdition(double edition) {
+	public void setEdition(Double edition) {
 		this.edition = edition;
 	}
 }
